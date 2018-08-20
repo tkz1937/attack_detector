@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# IPv4 only for now
+#------------------
+
+if [ "$FW_PROTO" != "ipv4" ]; then
+    return 0
+fi
+
+# Bail if fail2ban is not running
+#--------------------------------
+
+if [ ! -e /var/run/fail2ban/fail2ban.sock ]; then
+    return 0
+fi
+
+# Config
+#-------
+
+ACTION_ADD="/var/clearos/attack_detector/run/f2b-add"
+ACTION_DELETE="/var/clearos/attack_detector/run/f2b-delete"
+
+rm -f $ACTION_ADD
+rm -f $ACTION_DELETE
+
+# Regenerate iptables commands
+#-----------------------------
+
+JAILS=`LANG=en_US fail2ban-client status | grep "Jail list" | sed -e 's/.*Jail list://' -e 's/,//g'`
+
+for JAIL in $JAILS; do
+    ACTION=`fail2ban-client get $JAIL actions | tail -n 1`
+    fail2ban-client get $JAIL action $ACTION actionstart | grep "<iptables>" >> $ACTION_ADD
+    #PROPERTIES=`fail2ban-client get $JAIL actionproperties $ACTION | sed -e 's/.*://' -e 's/,//g'`
+    PROPERTIES="iptables chain name blocktype lockingopt protocol port returntype"
+
+    for PROPERTY in $PROPERTIES; do
+        CHECK=`echo $PROPERTY | grep -v ^known | grep -v ^action`
+        if [ -n "$CHECK" ]; then
+            VALUE=`fail2ban-client get $JAIL action $ACTION $PROPERTY`
+            VALUE_SED=`echo $VALUE |  sed 's/\//\\\\\//g'`
+            sed -i -e "s/<$PROPERTY>/$VALUE_SED/" $ACTION_ADD
+        fi
+    done
+done
+
+grep " \-I " $ACTION_ADD | sed "s/ \-I / -D /" > $ACTION_DELETE
+
+sh $ACTION_DELETE > /dev/null 2>&1
+sh $ACTION_ADD >/dev/null 2>&1
+
+# Exit 0
+:

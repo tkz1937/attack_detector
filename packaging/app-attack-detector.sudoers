@@ -1,0 +1,2 @@
+webconfig ALL = NOPASSWD: /bin/fail2ban-client
+%webconfig ALL = NOPASSWD: /bin/fail2ban-client

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Use ipset methodology
+#----------------------
+
+if [ ! -e /var/clearos/attack_detector/state/banaction-changed ]; then
+    CHECK=`grep "^banaction = iptables-multiport[[:space:]]*$" /etc/fail2ban/jail.conf 2>/dev/null`
+    if [ -n "$CHECK" ]; then
+        logger -p local6.notice -t installer "app-attack-detector - using ipset methodology"
+        sed -i -e "s/^banaction = iptables-multiport[[:space:]]*$/banaction = iptables-ipset-proto6/" /etc/fail2ban/jail.conf
+        touch /var/clearos/attack_detector/state/banaction-changed
+    fi
+fi
+
+if [ ! -e /var/clearos/attack_detector/state/banaction-allports-changed ]; then
+    CHECK=`grep "^banaction_allports = iptables-allports[[:space:]]*$" /etc/fail2ban/jail.conf 2>/dev/null`
+    if [ -n "$CHECK" ]; then
+        logger -p local6.notice -t installer "app-attack-detector - using ipset methodology for all ports"
+        sed -i -e "s/^banaction_allports = iptables-allports[[:space:]]*$/banaction_allports = iptables-ipset-proto6-allports/" /etc/fail2ban/jail.conf
+        touch /var/clearos/attack_detector/state/banaction-allports-changed
+    fi
+fi
