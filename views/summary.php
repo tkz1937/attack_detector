@@ -81,7 +81,8 @@ foreach ($entries as $entry) {
     $row['details'] = array(
         $entry['ip'],
         $entry['rule'],
-        $entry['date'] . ' - ' . $entry['time']
+        $entry['date'] . ' - ' . $entry['time'],
+        $entry['options']
     );
     $rows[] = $row;
 }
@@ -92,7 +93,7 @@ foreach ($entries as $entry) {
 
 $options = array(
     'default_rows' => 10,
-    'no_action' => TRUE,
+    'no_action' => FALSE,
     'sort-default-col' => 2,
 );
 
