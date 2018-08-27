@@ -49,10 +49,35 @@ $headers = array(
     lang('base_date') . '/' . lang('base_time')
 );
 
+$anchors = array();
 $rows = array();
 
+$tableau = array('ip' =>'192.168.0.2' ,
+                   'rule'=>'vander'
+                   'date'=>  
+               );
+
+$entries[]=$tableau;
+/////////////////////////////////////////////////////////////////////////////////
+//Log
+/////////////////////////////////////////////////////////////////////////////////
+
 foreach ($entries as $entry) {
+
+    $delete=($entry['delete'])?'edit':'delete';
+    $delete_anchor='anchor_'.$delete;
+
     $row = array();
+
+    $row=['current_delete']=(bool)$entry['delete'];
+    $row['action']='app/attack_detector/settings/delete'.$basename;
+
+    $row['anchors']=button_set(
+         array(
+            $delete_anchor('/app/attack_detector/settings/'.$delete.'/'.$basename,'high',$options),
+          );
+    )
+
     $row['details'] = array(
         $entry['ip'],
         $entry['rule'],
