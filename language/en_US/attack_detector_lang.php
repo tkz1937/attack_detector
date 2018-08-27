@@ -8,3 +8,6 @@ $lang['attack_detector_rules'] = 'Rules';
 $lang['attack_detector_rule_name'] = 'Name';
 $lang['attack_detector_ban_time'] = 'Ban Time';
 $lang['attack_detector_rule_invalid'] = 'Rule is invalid.';
+$lang['powered_by']='powered by';
+$lang['attack_detector_options']='options';
+$lang['attack_detector_ban_log_delete']='delete';
