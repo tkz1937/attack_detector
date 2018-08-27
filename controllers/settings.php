@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /**
  * Attack detector settings controller.
@@ -19,8 +19,7 @@
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// This program is distributed in the hope that it will be useful          // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
@@ -122,7 +121,8 @@ class Settings extends ClearOS_Controller
             return;
         }
     }
-    function delete($log){
+    function delete($log)
+    {
         try {
             $this->load->library('attack_detector/Fail2ban');
 
@@ -134,9 +134,11 @@ class Settings extends ClearOS_Controller
         }
     }
     
-    function edit($log){
+    function edit($log)
+    {
         try {
           $this->load->library('attack_detector/Fail2ban');
+          
           redirect('/attack_detector/settings');
 
         } catch (Exception $e) {
