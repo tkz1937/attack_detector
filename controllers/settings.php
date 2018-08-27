@@ -133,6 +133,7 @@ class Settings extends ClearOS_Controller
             return;
         }
     }
+    
     function edit($log){
         try {
           $this->load->library('attack_detector/Fail2ban');
