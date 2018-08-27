@@ -52,26 +52,24 @@ $anchors = array();
 
 foreach ($rules as $basename => $rule) {
     $state = ($rule['enabled']) ? 'disable' : 'enable';
-    //$add = ($rule['add']) ? 'delete' : 'add';
+   
     $state_anchor = 'anchor_' . $state;
-    //$add_anchor='anchor_'.$add;
+    
 
     $item['current_state'] = (bool)$rule['enabled'];
     $item['action'] = '/app/attack_detector/settings/edit/' . $basename;
     $item['anchors'] = button_set(
         array(
             $state_anchor('/app/attack_detector/settings/' . $state . '/' . $basename, 'high', $options),
-            //$add_anchor('/app/attack_detector/settings/' . $add . '/' . $basename, 'high', $options),
+            
         )
-
     );
     $item['details'] = array(
         $basename,
         $rule['description']
     );
-    $items[] = $item;
-    
 
+    $items[] = $item;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -82,10 +80,7 @@ $options = array (
     'default_rows' => 25,
     'sort-default-col' => 1,
     'row-enable-disable' => TRUE
-
 );
-
-
 
 echo summary_table(
     lang('attack_detector_rules'),

@@ -122,18 +122,4 @@ class Settings extends ClearOS_Controller
             return;
         }
     }
-    function delete($rule){
-        try {
-            
-        } catch (Exception $e) {
-            
-        }
-    }
-    function blacklist(){
-        try {
-            
-        } catch (Exception $e) {
-            
-        }
-    }
 }

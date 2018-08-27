@@ -47,7 +47,6 @@ $headers = array(
     lang('network_ip'),
     lang('attack_detector_rule'),
     lang('base_date') . '/' . lang('base_time')
-    //lang('attack_detector_options');
 );
 
 $rows = array();
@@ -57,9 +56,7 @@ foreach ($entries as $entry) {
     $row['details'] = array(
         $entry['ip'],
         $entry['rule'],
-        $entry['date'] . ' - ' . $entry['time'],
-        $entry['options']
-
+        $entry['date'] . ' - ' . $entry['time']
     );
     $rows[] = $row;
 }
@@ -69,9 +66,9 @@ foreach ($entries as $entry) {
 ///////////////////////////////////////////////////////////////////////////////
 
 $options = array(
-    'default_rows' => 15,
-    'no_action' => FALSE,
-    'sort-default-col' => 3,
+    'default_rows' => 10,
+    'no_action' => TRUE,
+    'sort-default-col' => 2,
 );
 
 echo summary_table(
