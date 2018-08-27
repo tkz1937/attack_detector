@@ -7,8 +7,9 @@
 $app['basename'] = 'attack_detector';
 $app['version'] = '2.3.1';
 $app['release'] = '1';
+$app['version']='2.3.1';
 $app['vendor'] = 'ClearFoundation';
-$app['packager'] = 'ClearFoundation';
+$app['packager'] = 'itot';
 $app['license'] = 'GPLv3';
 $app['license_core'] = 'LGPLv3';
 $app['description'] = lang('attack_detector_app_description');
@@ -70,4 +71,14 @@ $app['core_file_manifest'] = array(
 $app['delete_dependency'] = array(
     'app-attack-detector-core',
     'fail2ban-server',
+);
+$app['powered_by']=array(
+    'packages' =>array(
+        'attack_detector' =>array(
+            'name' =>'itot' ,
+            'version'=>'2.3.1',
+            'url'=>'',
+             ), 
+    ),
+
 );
