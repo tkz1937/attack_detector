@@ -52,9 +52,10 @@ $headers = array(
 $anchors = array();
 $rows = array();
 
-$tableau = array('ip' =>'192.168.0.2' ,
-                   'rule'=>'vander'
-                   'date'=>  
+$tableau = array('ip' =>'192.168.223.4' ,
+                'rule'=>'der',
+                'date'=> '' 
+                   //'options'=>'cancel'
                );
 
 $entries[]=$tableau;
@@ -64,19 +65,20 @@ $entries[]=$tableau;
 
 foreach ($entries as $entry) {
 
-    $delete=($entry['delete'])?'edit':'delete';
+    $delete=($entry['delete']) ?'edit':'delete';
+
     $delete_anchor='anchor_'.$delete;
 
     $row = array();
 
-    $row=['current_delete']=(bool)$entry['delete'];
+    $row['current_delete']=(bool)$entry['delete'];
     $row['action']='/app/attack_detector/settings/delete/'.$basename;
 
     $row['anchors']=button_set(
          array(
-            $delete_anchor('/app/attack_detector/settings/'.$delete.'/'.$basename,'high',$options),
-          );
-    )
+            $delete_anchor('/app/attack_detector/settings/' .$delete. '/'. $basename,'high',$options),
+          )
+    );
 
     $row['details'] = array(
         $entry['ip'],
@@ -92,9 +94,9 @@ foreach ($entries as $entry) {
 ///////////////////////////////////////////////////////////////////////////////
 
 $options = array(
-    'default_rows' => 10,
+    'default_rows' => 15,
     'no_action' => FALSE,
-    'sort-default-col' => 2,
+    'sort-default-col' => 3,
 );
 
 echo summary_table(
