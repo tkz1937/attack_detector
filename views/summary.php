@@ -70,7 +70,7 @@ foreach ($entries as $entry) {
     $row = array();
 
     $row=['current_delete']=(bool)$entry['delete'];
-    $row['action']='app/attack_detector/settings/delete'.$basename;
+    $row['action']='/app/attack_detector/settings/delete/'.$basename;
 
     $row['anchors']=button_set(
          array(
