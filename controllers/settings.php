@@ -126,7 +126,7 @@ class Settings extends ClearOS_Controller
         try {
             $this->load->library('attack_detector/Fail2ban');
 
-            redirect('/attack_detector/Settings');
+            redirect('/attack_detector/settings');
             
         } catch (Exception $e) {
             $this->page->view_exception($e);
