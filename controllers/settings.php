@@ -124,7 +124,7 @@ class Settings extends ClearOS_Controller
     function delete($log)
     {
         try {
-            $this->load->library('attack_detector/Fail2ban');
+            $this->load->library('attack_detector/Fail2ban/');
 
             redirect('/attack_detector/settings');
             
