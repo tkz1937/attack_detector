@@ -59,6 +59,7 @@ use \clearos\apps\base\Daemon as Daemon;
 use \clearos\apps\base\File as File;
 use \clearos\apps\base\Folder as Folder;
 use \clearos\apps\base\Shell as Shell;
+//use \clearos\apps\attack_detector\Fail2ban\delete as delete;
 
 clearos_load_library('base/Daemon');
 clearos_load_library('base/File');
@@ -98,7 +99,7 @@ class Fail2ban extends Daemon
 
     const FILE_LOG = '/var/log/fail2ban.log';
     const COMMAND_FAIL2BAN_CLIENT = '/bin/fail2ban-client';
-    const PATH_FILTERS =  '/var/clearos/attack_detector/filters';
+    const PATH_FILTERS =  '';
     const PATH_JAILS =  '/etc/fail2ban/jail.d';
     const DEFAULT_BAN_TIME = 600; // TODO: lookup default ban time in /etc/fail2ban/jail.conf
 
