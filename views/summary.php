@@ -57,7 +57,7 @@ $rows = array();
 //                 'date'=> '' 
 //                    //'options'=>'cancel'
 //                );
-//
+
 $entries[]=$tableau;
 /////////////////////////////////////////////////////////////////////////////////
 //Log
@@ -69,14 +69,14 @@ foreach ($entries as $entry) {
 
     $delete_anchor='anchor_'.$delete;
 
-    //$row = array();
+    $row = array();
 
-    $row['current_delete']=(bool)$entry['deleted'];
+    $row['current_delete']=(int)$entry['deleted'];
     $row['action']='/app/attack_detector/settings/delete/'.$basename;
 
     $row['anchors']=button_set(
          array(
-            $delete_anchor('/app/attack_detector/settings/' .$delete. '/'. $basename,'high',$options),
+            $delete_anchor('/app/attack_detector/settings/'.$delete.'/'. $basename,'high',$options),
           )
     );
 
