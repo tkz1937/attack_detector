@@ -121,38 +121,5 @@ class Settings extends ClearOS_Controller
             return;
         }
     }
-    function delete($log)
-    {
-        try {
-            $this->load->library('attack_detector/Fail2ban/');
 
-            $this->fail2ban->get_log(20);
-
-            $this->page->get_filters();
-            
-            redirect('/attack_detector/settings');
-            
-        } catch (Exception $e) {
-            $this->page->view_exception($e);
-            return;
-        }
-    }
-    
-    function edit($log)
-    {
-        try {
-  
-            $this->load->library('attack_detector/Fail2ban');
-
-              $this->fail2ban->get_log(20);
-
-            $this->page->get_jails();
-
-          redirect('/attack_detector/settings');
-
-        } catch (Exception $e) {
-            $this->page->view_exception($e);
-            return;
-        }
-    }
 }
