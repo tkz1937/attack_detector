@@ -76,4 +76,52 @@ class Summary extends ClearOS_Controller
 
         $this->page->view_form('attack_detector/summary', $data, lang('base_summary'));
     }
+        /**
+     * Delete log.
+     *
+     * @param string $log log
+     *
+     * @return view
+     */
+        function delete()
+    {
+        try {
+            $this->load->library('attack_detector/Fail2ban/');
+
+           $this->fail2ban->get_filters();
+
+            $this->page->get_log();
+            
+            redirect('/attack_detector/settings');
+            
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+    }
+        /**
+     * Editlog.
+     *
+     * @param string $log log
+     *
+     * @return view
+     */
+    
+    function edit()
+    {
+        try {
+  
+            $this->load->library('attack_detector/Fail2ban');
+
+              $this->fail2ban->get_jails();
+
+           $this->page->get_log();
+
+          redirect('/attack_detector/settings');
+
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+    }
 }
