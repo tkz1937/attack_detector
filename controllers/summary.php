@@ -86,11 +86,12 @@ class Summary extends ClearOS_Controller
         function delete()
     {
         try {
-            $this->load->library('attack_detector/Fail2ban/');
+
+           $this->load->library('attack_detector/Fail2ban');
 
            $this->fail2ban->get_filters();
 
-            $this->page->get_log();
+           $this->page->get_log();
             
             redirect('/attack_detector/summary');
             
@@ -111,9 +112,9 @@ class Summary extends ClearOS_Controller
     {
         try {
   
-            $this->load->library('attack_detector/Fail2ban');
+           $this->load->library('attack_detector/Fail2ban');
 
-              $this->fail2ban->get_jails();
+           $this->fail2ban->get_jails();
 
            $this->page->get_log();
 
