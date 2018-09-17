@@ -99,7 +99,7 @@ class Fail2ban extends Daemon
 
     const FILE_LOG = '/var/log/fail2ban.log';
     const COMMAND_FAIL2BAN_CLIENT = '/bin/fail2ban-client';
-    const PATH_FILTERS =  '/etc/fail2ban/jail.d';
+    const PATH_FILTERS =  '';
     const PATH_JAILS =  '/etc/fail2ban/jail.d';
     const DEFAULT_BAN_TIME = 600; // TODO: lookup default ban time in /etc/fail2ban/jail.conf
 
