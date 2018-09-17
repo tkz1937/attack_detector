@@ -72,11 +72,11 @@ foreach ($entries as $entry) {
     $row = array();
 
     $row['current_delete']=(int)$entry['deleted'];
-    $row['action']='/app/attack_detector/settings/delete/'.$basename;
+    $row['action']='/app/attack_detector/summary/delete/'.$basename;
 
     $row['anchors']=button_set(
          array(
-            $delete_anchor('/app/attack_detector/settings/'.$delete.'/'. $basename,'high',$options),
+            $delete_anchor('/app/attack_detector/summary/'.$delete.'/'. $basename,'high',$options),
           )
     );
 
