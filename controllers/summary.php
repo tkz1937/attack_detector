@@ -91,7 +91,7 @@ class Summary extends ClearOS_Controller
 
            $this->fail2ban->get_filters();
 
-           $this->page->get_log();
+           $this->page->get_log(20);
             
             redirect('/attack_detector/summary');
             
@@ -116,7 +116,7 @@ class Summary extends ClearOS_Controller
 
            $this->fail2ban->get_jails();
 
-           $this->page->get_log();
+           $this->page->get_log(20);
 
           redirect('/attack_detector/summary');
 
