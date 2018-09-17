@@ -92,7 +92,7 @@ class Summary extends ClearOS_Controller
 
             $this->page->get_log();
             
-            redirect('/attack_detector/settings');
+            redirect('/attack_detector/summary');
             
         } catch (Exception $e) {
             $this->page->view_exception($e);
@@ -117,7 +117,7 @@ class Summary extends ClearOS_Controller
 
            $this->page->get_log();
 
-          redirect('/attack_detector/settings');
+          redirect('/attack_detector/summary');
 
         } catch (Exception $e) {
             $this->page->view_exception($e);
