@@ -52,11 +52,11 @@ $headers = array(
 $anchors = array();
 $rows = array();
 
-// $tableau = array('ip' =>'192.168.223.4' ,
-//                 'rule'=>'der',
-//                 'date'=> '' 
-//                    //'options'=>'cancel'
-//                );
+$tableau = array('ip' =>'192.168.223.4' ,
+                'rule'=>'der',
+                'date'=> '' 
+                   //'options'=>'cancel'
+               );
 
 $entries[]=$tableau;
 /////////////////////////////////////////////////////////////////////////////////
@@ -73,12 +73,15 @@ foreach ($entries as $entry) {
 
     $row['current_delete']=(int)$entry['deleted'];
     $row['action']='/app/attack_detector/summary/delete/'.$basename;
+    if($entries){
 
-    $row['anchors']=button_set(
-         array(
-            $delete_anchor('/app/attack_detector/summary/'.$delete.'/'. $basename,'high',$options),
-          )
-    );
+        $row['anchors']=button_set(
+             array(
+                $delete_anchor('/app/attack_detector/summary/'.$delete.'/'. $basename,'high',$options),
+              )
+        );
+    }
+
 
     $row['details'] = array(
         $entry['ip'],
